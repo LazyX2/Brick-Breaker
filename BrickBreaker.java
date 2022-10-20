@@ -228,9 +228,9 @@ public class BrickBreaker extends JFrame {
     }
 
     @Override
-    protected void processMouseMotionEvent(MouseEvent e) {
-        super.processMouseMotionEvent(e);
-        plane = e.getXOnScreen();
+    protected void processMouseEvent(MouseEvent e) {
+        super.processMouseEvent(e);
+        if (e.getClickCount() > 0) pause = !pause;
     }
 
     @Override
