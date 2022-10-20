@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -177,7 +176,7 @@ public class BrickBreaker extends JFrame {
             } else {
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("Bold", Font.BOLD, 30));
-                g.drawString("Seconds: " + ((System.currentTimeMillis() - start) / 1000), 50, 50);
+                g.drawString("Time: " + ((System.currentTimeMillis() - start) / 1000), 50, 50);
             }
         }
     }
@@ -225,12 +224,6 @@ public class BrickBreaker extends JFrame {
             }
         };
         gameLoop.start();
-    }
-
-    @Override
-    protected void processMouseEvent(MouseEvent e) {
-        super.processMouseEvent(e);
-        if (e.getClickCount() > 0) pause = !pause;
     }
 
     @Override
