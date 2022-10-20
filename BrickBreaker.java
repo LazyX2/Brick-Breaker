@@ -39,6 +39,11 @@ public class BrickBreaker extends JFrame {
 
     public boolean active = true, pause = true;
 
+    public double generateChanger() {
+        double c = 0.1*Math.random()+1;
+        return -c;
+    }
+
     class Screen extends Canvas {
 
         public Screen() {
@@ -51,36 +56,36 @@ public class BrickBreaker extends JFrame {
 
             if (active) {
                 if (redBall[1] <= 0) {
-                    redBall[3] *= -(1 * Math.random() + 1);
-                    redBall[2] *= -(1 * Math.random() + 1);
+                    redBall[3] *= generateChanger();
+                    redBall[2] *= generateChanger();
                 }
                 if (greenBall[1] <= 0) {
-                    greenBall[3] *= -(1 * Math.random() + 1);
-                    greenBall[2] *= -(1 * Math.random() + 1);
+                    greenBall[3] *= generateChanger();
+                    greenBall[2] *= generateChanger();
                 }
                 if (blueBall[1] <= 0) {
-                    blueBall[3] *= -(1 * Math.random() + 1);
-                    blueBall[2] *= -(1 * Math.random() + 1);
+                    blueBall[3] *= generateChanger();
+                    blueBall[2] *= generateChanger();
                 }
 
                 if (redBall[0] <= 0) {
-                    redBall[2] *= -(1 * Math.random() + 1);
+                    redBall[2] *= generateChanger();
                 }
                 if (greenBall[0] <= 0) {
-                    greenBall[2] *= -(1 * Math.random() + 1);
+                    greenBall[2] *= generateChanger();
                 }
                 if (blueBall[0] <= 0) {
-                    blueBall[2] *= -(1 * Math.random() + 1);
+                    blueBall[2] *= generateChanger();
                 }
 
                 if (redBall[0] >= getWidth()) {
-                    redBall[2] *= -(1 * Math.random() + 1);
+                    redBall[2] *= generateChanger();
                 }
                 if (greenBall[0] >= getWidth()) {
-                    greenBall[2] *= -(1 * Math.random() + 1);
+                    greenBall[2] *= generateChanger();
                 }
                 if (blueBall[0] >= getWidth()) {
-                    blueBall[2] *= -(1 * Math.random() + 1);
+                    blueBall[2] *= generateChanger();
                 }
 
                 if (redBall[1] >= getHeight()) {
@@ -95,22 +100,22 @@ public class BrickBreaker extends JFrame {
 
                 if (redBall[0] >= plane && redBall[0] - 20 <= plane + 150) {
                     if (redBall[1] + 20 >= 700 && redBall[1] - 20 <= 720) {
-                        redBall[2] *= -(1 * Math.random() + 1);
-                        redBall[3] *= -(1 * Math.random() + 1);
+                        redBall[2] *= generateChanger();
+                        redBall[3] *= generateChanger();
                     }
                 }
 
                 if (greenBall[0] >= plane && greenBall[0] - 20 <= plane + 150) {
                     if (greenBall[1] + 20 >= 700 && greenBall[1] - 20 <= 720) {
-                        greenBall[2] *= -(1 * Math.random() + 1);
-                        greenBall[3] *= -(1 * Math.random() + 1);
+                        greenBall[2] *= generateChanger();
+                        greenBall[3] *= generateChanger();
                     }
                 }
 
                 if (blueBall[0] >= plane && blueBall[0] - 20 <= plane + 150) {
                     if (blueBall[1] + 20 >= 700 && blueBall[1] - 20 <= 720) {
-                        blueBall[2] *= -(1 * Math.random() + 1);
-                        blueBall[3] *= -(1 * Math.random() + 1);
+                        blueBall[2] *= generateChanger();
+                        blueBall[3] *= generateChanger();
                     }
                 }
 
@@ -124,7 +129,7 @@ public class BrickBreaker extends JFrame {
                         if (brick.p.x <= redBall[0] && brick.p.x + 40 >= redBall[0]) {
                             if (brick.p.y <= redBall[1] && brick.p.y + 40 >= redBall[1]) {
                                 forRemoval.add(brick);
-                                redBall[2] *= -(1 * Math.random() + 1);
+                                redBall[2] *= generateChanger();
                                 if (redBall[2] <= 3) redBall[2] = 1;
                             }
                         }
@@ -134,7 +139,7 @@ public class BrickBreaker extends JFrame {
                         if (brick.p.x <= greenBall[0] && brick.p.x + 40 >= greenBall[0]) {
                             if (brick.p.y <= greenBall[1] && brick.p.y + 40 >= greenBall[1]) {
                                 forRemoval.add(brick);
-                                greenBall[2] *= -(1 * Math.random() + 1);
+                                greenBall[2] *= generateChanger();
                                 if (greenBall[2] <= 3) greenBall[2] = 1;
                             }
                         }
@@ -144,7 +149,7 @@ public class BrickBreaker extends JFrame {
                         if (brick.p.x <= blueBall[0] && brick.p.x + 40 >= blueBall[0]) {
                             if (brick.p.y <= blueBall[1] && brick.p.y + 40 >= blueBall[1]) {
                                 forRemoval.add(brick);
-                                blueBall[2] *= -(1 * Math.random() + 1);
+                                blueBall[2] *= generateChanger();
                                 if (blueBall[2] <= 3) blueBall[2] = 1;
                             }
                         }
@@ -176,7 +181,7 @@ public class BrickBreaker extends JFrame {
             } else {
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("Bold", Font.BOLD, 30));
-                g.drawString("Time: " + ((System.currentTimeMillis() - start) / 1000), 50, 50);
+                g.drawString("Time: " + ((System.currentTimeMillis() - start) / 1000) + " Seconds", 50, 50);
             }
         }
     }
