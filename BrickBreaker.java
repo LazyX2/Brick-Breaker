@@ -37,7 +37,7 @@ public class BrickBreaker extends JFrame {
 
     }
 
-    public boolean active = true, pause = false;
+    public boolean active = true, pause = true;
 
     class Screen extends Canvas {
 
@@ -51,36 +51,36 @@ public class BrickBreaker extends JFrame {
 
             if (active) {
                 if (redBall[1] <= 0) {
-                    redBall[3] *= -1;
-                    redBall[2] *= -1;
+                    redBall[3] *= -(1 * Math.random() + 1);
+                    redBall[2] *= -(1 * Math.random() + 1);
                 }
                 if (greenBall[1] <= 0) {
-                    greenBall[3] *= -1;
-                    greenBall[2] *= -1;
+                    greenBall[3] *= -(1 * Math.random() + 1);
+                    greenBall[2] *= -(1 * Math.random() + 1);
                 }
                 if (blueBall[1] <= 0) {
-                    blueBall[3] *= -1;
-                    blueBall[2] *= -1;
+                    blueBall[3] *= -(1 * Math.random() + 1);
+                    blueBall[2] *= -(1 * Math.random() + 1);
                 }
 
                 if (redBall[0] <= 0) {
-                    redBall[2] *= -1;
+                    redBall[2] *= -(1 * Math.random() + 1);
                 }
                 if (greenBall[0] <= 0) {
-                    greenBall[2] *= -1;
+                    greenBall[2] *= -(1 * Math.random() + 1);
                 }
                 if (blueBall[0] <= 0) {
-                    blueBall[2] *= -1;
+                    blueBall[2] *= -(1 * Math.random() + 1);
                 }
 
                 if (redBall[0] >= getWidth()) {
-                    redBall[2] *= -1;
+                    redBall[2] *= -(1 * Math.random() + 1);
                 }
                 if (greenBall[0] >= getWidth()) {
-                    greenBall[2] *= -1;
+                    greenBall[2] *= -(1 * Math.random() + 1);
                 }
                 if (blueBall[0] >= getWidth()) {
-                    blueBall[2] *= -1;
+                    blueBall[2] *= -(1 * Math.random() + 1);
                 }
 
                 if (redBall[1] >= getHeight()) {
@@ -95,22 +95,22 @@ public class BrickBreaker extends JFrame {
 
                 if (redBall[0] >= plane && redBall[0] - 20 <= plane + 150) {
                     if (redBall[1] + 20 >= 700 && redBall[1] - 20 <= 720) {
-                        redBall[2] *= -1;
-                        redBall[3] *= -1;
+                        redBall[2] *= -(1 * Math.random() + 1);
+                        redBall[3] *= -(1 * Math.random() + 1);
                     }
                 }
 
                 if (greenBall[0] >= plane && greenBall[0] - 20 <= plane + 150) {
                     if (greenBall[1] + 20 >= 700 && greenBall[1] - 20 <= 720) {
-                        greenBall[2] *= -1;
-                        greenBall[3] *= -1;
+                        greenBall[2] *= -(1 * Math.random() + 1);
+                        greenBall[3] *= -(1 * Math.random() + 1);
                     }
                 }
 
                 if (blueBall[0] >= plane && blueBall[0] - 20 <= plane + 150) {
                     if (blueBall[1] + 20 >= 700 && blueBall[1] - 20 <= 720) {
-                        blueBall[2] *= -1;
-                        blueBall[3] *= -1;
+                        blueBall[2] *= -(1 * Math.random() + 1);
+                        blueBall[3] *= -(1 * Math.random() + 1);
                     }
                 }
 
@@ -199,7 +199,7 @@ public class BrickBreaker extends JFrame {
         setFocusable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setTitle("Brick Breaker");
+        setTitle("Brick Breaker -Paused");
         add(screen);
         Thread gameLoop;
         gameLoop = new Thread() {
@@ -233,7 +233,11 @@ public class BrickBreaker extends JFrame {
         if (e.getKeyChar() == 'a') plane -= 10;
         if (e.getKeyChar() == ' ') {
             pause = !pause;
-            setTitle("Brick Breaker -Paused");
+            if (!pause) {
+                setTitle("Brick Breaker -Paused");
+            } else {
+                setTitle("Brick Breaker");
+            }
         }
     }
 }
